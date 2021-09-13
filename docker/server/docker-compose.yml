@@ -1,0 +1,13 @@
+version: '3'
+services:
+  tcp-server:
+    container_name: tcp-server
+    privileged: true
+    sysctls: 
+      - net.ipv4.tcp_congestion_control=cubic
+    build: .
+    command: /bin/sh startup.sh
+    ports:
+      - "6666:6666"
+    environment:
+      PYTHONUNBUFFERED: 1
